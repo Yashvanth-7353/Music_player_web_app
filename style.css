@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 
 .nav nav {
@@ -32,6 +33,7 @@ body {
   border-radius: 50px;
   background-color: #201f1f;
   border: none;
+  cursor: pointer;
 }
 
 .container {
@@ -44,9 +46,15 @@ body {
 .left {
   width: 25vw;
   background-color: #121212;
+  margin: 10px;
+  border-radius: 50px;
 }
 .right {
   width: 74vw;
+  padding: 10px;
+  background-color: #121212;
+  margin: 10px;
+  border-radius: 30px;
 }
 
 .invert {
@@ -93,6 +101,7 @@ body {
   background-color: transparent;
   color: rgb(172, 170, 170);
   font-size: 16px;
+  cursor: pointer;
 }
 .line {
   width: 2px;
@@ -113,6 +122,7 @@ body {
   font-family: inherit;
   border: none;
   font-size: 14px;
+  
 }
 
 .btn-transparent {
@@ -151,4 +161,96 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 10px;
+  cursor: pointer;
+}
+
+.nav nav{
+  justify-content: space-around;
+}
+
+.your-library{
+    height: 50px;
+    width: 20vw;
+    justify-content: space-between;
+    padding: 0px 20px 30px 20px;
+    align-items: center;
+    background-color: #121212;
+    margin: 20px;
+}
+
+.your-library button img{
+  height: 20px;
+  width: auto;
+  z-index: 10;
+}
+.your-library button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.left-cards{
+  height:350px;
+  width: 25vw;
+}
+
+.left-cards div{
+  height: 130px;
+  width: 300px;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #201f1f;
+}
+
+.create-playlist span{
+  display: block;
+  padding: 5px;
+  font-size: 13px;
+
+}
+
+.create-playlist span :first-child{
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.create-playlist button{
+    margin: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    height: 35px;
+    width: 121px;
+}
+
+.browse-product span{
+  display: block;
+  padding: 5px;
+  font-size: 13px;
+}
+
+.browse-product span :first-child{
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.browse-product button{
+    margin: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    height: 35px;
+    width: 121px;
+}
+
+.left-footer{
+ 
+  display: flex;
+  font-size: 10px;
+  gap: 10px;
+}
+
+.left-footer a{
+  color: #a7a7a7;
+  
 }
