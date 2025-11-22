@@ -10,10 +10,33 @@ async function get_songs() {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if(element.href.endsWith(".mp3")){
-            songs.push(element.href)
+            songs.push(element.href.split("/songs/")[1])
         }
         
     }
-    console.log(songs);
+    return songs;
 }
-get_songs();
+
+async function main() {
+    let songs = await get_songs();
+    console.log(songs)
+
+    let songUL=document.querySelector(".song-list").getElementsByTagName("ul")[0]
+    for (const song of songs) {
+        songUL.innerHTML=songUL.innerHTML+ `<li>
+              <img class="invert" src="assets/music.svg" alt="">
+              <div class="song-info">
+                <div class="song-name">${song.replaceAll("%20"," ")}</div>
+                <div class="song-artist">YAsh</div>
+              </div>
+              <img class="invert" src="assets/play-btn.svg" alt="">
+            </li>
+        `;
+        
+    }
+
+    var audio = new Audio(songs[0]);
+    // audio.play();
+    
+}
+main();

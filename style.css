@@ -54,6 +54,9 @@ body {
   background-color: #121212;
   margin: 10px;
   border-radius: 50px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
 }
 .right {
   width: 74vw;
@@ -322,4 +325,27 @@ body {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.song-list ul li{
+    list-style: decimal;
+    display: flex;
+    gap: 50px;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 15px;
+    border: 1px solid white;
+    margin: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+.song-info{
+  font-size: 10px;
+  width: 150px;
+}
+
+.song-list{
+  height: 300px;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
