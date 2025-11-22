@@ -365,3 +365,14 @@ body {
   transition: left 0.5s;
 }
 
+.volume{
+  display: flex;
+}
+.volume img {
+  width: 20px;
+}
+
+.range input{
+  height: 3px;
+  width: 90%;
+}

@@ -1,5 +1,6 @@
 console.log("Lets write the JS");
 let currentsong = new Audio();
+let songs;
 
 async function get_songs() {
     let a = await fetch("http://127.0.0.1:5500/songs/")
@@ -52,7 +53,7 @@ async function main() {
 
     
     
-    let songs = await get_songs();
+    songs = await get_songs();
     // console.log(songs)
     playMusic(songs[0],true)
 
@@ -102,6 +103,30 @@ async function main() {
         document.querySelector(".circle").style.left=percent + "%";
         currentsong.currentTime=(currentsong.duration*percent)/100
         
+    })
+
+    previous.addEventListener("click", () => {
+        currentsong.pause();
+        console.log("previous clicked")
+        let index = songs.indexOf(currentsong.src.split("/").slice(-1) [0])
+        if((index-1)>=0){
+            playMusic(songs[index+1])
+        }
+        
+    })
+    next.addEventListener("click", () => {
+        currentsong.pause();
+        console.log("next clicked")
+        let index = songs.indexOf(currentsong.src.split("/").slice(-1) [0])
+        if((index+1)<songs.length){
+            playMusic(songs[index+1])
+        }
+        
+    })
+
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", e=> {
+        console.log(e, e.target, e.target.value)
+         currentsong.volume=parseInt(e.target.value)/100;
     })
 }
 main();
