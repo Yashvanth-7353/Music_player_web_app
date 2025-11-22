@@ -52,7 +52,7 @@ body {
 .right {
   width: 74vw;
   padding: 10px;
-  background-color: #121212;
+  background-color: #1f1f1f;
   margin: 10px;
   border-radius: 30px;
 }
@@ -253,4 +253,48 @@ body {
 .left-footer a{
   color: #a7a7a7;
   
+}
+
+/* right */
+.card-container{
+  height: 300px;
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  
+}
+.trending-song h2{
+  font-size: 26px;
+  margin: 5px;
+  
+}
+
+.card{
+  position: relative;
+  height: 250px;
+  width: 175px;
+  padding: 5px;
+}
+.playlist-img {
+  height: 175px;
+  width: auto;
+  border-radius: 10px;
+}
+
+.card p{
+  font-size: 13px;
+  color: hsla(0, 5%, 89%, 0.7);;
+}
+
+.play{
+    position: absolute;
+    right: 10px;
+    bottom: 80px;
+}
+
+.play img{
+  height: 30px;
+  width: auto;
 }
