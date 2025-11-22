@@ -1,4 +1,5 @@
 console.log("Lets write the JS");
+let currentsong = new Audio();
 
 async function get_songs() {
     let a = await fetch("http://127.0.0.1:5500/songs/")
@@ -16,27 +17,91 @@ async function get_songs() {
     }
     return songs;
 }
+const playMusic= (track,pause=false)=>{
+    // let audio = new Audio("/songs/" + track)
+    currentsong.src =  "/songs/" + track
+    if(!pause){
+        currentsong.play()
+        play.src="assets\\pause.svg";
+    }
+    
+    document.querySelector(".songinfo").innerHTML=decodeURI(track)
+    document.querySelector(".songtime").innerHTML="00:00 / 00:00"
+}
+
+function formatTime(seconds) {
+    // 1. Handle "Not a Number" (NaN) cases if the song hasn't loaded yet
+    if (isNaN(seconds) || seconds < 0) {
+        return "00:00";
+    }
+
+    // 2. Calculate Minutes (discard the decimal part)
+    const minutes = Math.floor(seconds / 60);
+
+    // 3. Calculate Remaining Seconds (using the modulo % operator)
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    // 4. Add a leading zero to seconds if less than 10 (e.g., "5" becomes "05")
+    const formattedSeconds = remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds;
+
+    // 5. Return the final string
+    return `${minutes}:${formattedSeconds}`;
+}
 
 async function main() {
+
+    
+    
     let songs = await get_songs();
-    console.log(songs)
+    // console.log(songs)
+    playMusic(songs[0],true)
+
+    
 
     let songUL=document.querySelector(".song-list").getElementsByTagName("ul")[0]
     for (const song of songs) {
         songUL.innerHTML=songUL.innerHTML+ `<li>
               <img class="invert" src="assets/music.svg" alt="">
               <div class="song-info">
-                <div class="song-name">${song.replaceAll("%20"," ")}</div>
-                <div class="song-artist">YAsh</div>
+                <div>${song.replaceAll("%20"," ")}</div>
+                <div>YAsh</div>
               </div>
               <img class="invert" src="assets/play-btn.svg" alt="">
             </li>
         `;
         
-    }
+    } 
+    Array.from(document.querySelector(".song-list").getElementsByTagName("li")).forEach(e => {
+        
+        e.addEventListener("click", ()=> {
+            
+            console.log(e.querySelector(".song-info").firstElementChild.innerHTML)
+            playMusic(e.querySelector(".song-info").firstElementChild.innerHTML)
+        });
+            
+        
+    });
+    play.addEventListener("click",() => {
+        if(currentsong.paused){
+            currentsong.play();
+            play.src="assets\\pause.svg";
+        }
+        else{
+            currentsong.pause()
+            play.src="assets\\play-btn.svg";
+        }
+    })
 
-    var audio = new Audio(songs[0]);
-    // audio.play();
-    
+    currentsong.addEventListener("timeupdate", () => {
+        document.querySelector(".songtime").innerHTML=`${formatTime(currentsong.currentTime)} : ${formatTime(currentsong.duration)}`
+        document.querySelector(".circle").style.left=(currentsong.currentTime/currentsong.duration)*100 + "%"
+    })
+
+    document.querySelector(".seek-bar").addEventListener("click", e=> {
+        let percent = (e.offsetX/e.target.getBoundingClientRect().width)*100;
+        document.querySelector(".circle").style.left=percent + "%";
+        currentsong.currentTime=(currentsong.duration*percent)/100
+        
+    })
 }
 main();
