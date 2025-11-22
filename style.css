@@ -55,6 +55,8 @@ body {
   background-color: #1f1f1f;
   margin: 10px;
   border-radius: 30px;
+  position: relative;
+  
 }
 
 .invert {
@@ -298,3 +300,26 @@ body {
   height: 30px;
   width: auto;
 }
+
+.play-bar{
+  position:absolute;
+  bottom: 0px;
+  background-color: rgb(70, 86, 70);
+  width: 95%;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.play-bar{
+  display: flex;
+  justify-content: center;
+
+}
+
+.song-buttons button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
