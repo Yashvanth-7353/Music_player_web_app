@@ -1,1 +1,1 @@
-Its an Music Web APP like spotify, which i done in the process learning the web dev
+Its an Music Web APP like spotify, which I done in the process of learning the web dev
